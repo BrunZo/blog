@@ -1,15 +1,16 @@
 export default function Page() {
   return (
     <div className='text-gray-800'>
-      <h1 className='font-bold text-3xl mt-2'>Sobre mí</h1>
-      <p>Yo, el escritor de esta página, también soy el autor de este sitio. Mi nombre es, así como también mi apellido es. En definitiva, mi nombre y apellido son.</p>
-      <p>Yo nací, curiosamente, el mismo día de mi cumpleaños. Eso sí, mi fecha de cumpleaños no puedo decirla. Lo que sí puedo decir sin temor es que precisamente el día en que nací, emepcé a vivir. Además, al momento de escribir esto, tengo certeza de que sigo viviendo.</p>
-      <p>Una de las cosas más destacables de mi personalidad es un aparente interés por los problemas matemáticos, lo que puede evidenciarse en el hecho de que, por ejemplo, soy capaz de contar hasta cien sin muchos errores. Es por esto mismo que, emulando al antiquísimo Diofanto, pretendo revelar mi edad a través de un acertijo matemático:</p>
-      <p>Sea A el año corriente. Consideraremos por simplicidad mi edad al 31 de diciembre del corriente. Entonces, mi edad E está dada por la ecuación:</p>
-      <p className='text-center my-2'>E + n = A</p>
-      <p>donde n es el año de mi nacimiento.</p>
-      <p>Otra cosa evidente en mi personalidad es mi interés por la programación, y esto puede verse al punto de que ya desarrollé mi propia página personal (que, para los que no estén enterados, puede visitarse al clicar aquí).</p>
-      <p>Con esta línea, y luego de haber abundado en detalles, finalizo está autobiografía.</p>
+      <h1 className='font-bold text-3xl mt-2'>about me</h1>
+        <p className='mt-3'> <strong>tl;dr</strong> probably you'd rather check <a className='text-gray-500 hover:text-gray-800' href="https://www.linkedin.com/in/bruno-mart%C3%ADn-ziger-729b48204">my LinkedIn</a>.</p>
+        <p> I, the writer of this page, am also the author of this site. My name is, and so is my surname. In short, my name and surname are.</p>
+        <p>I was born, curiously, on the same day as my birthday. That said, I can't disclose the exact date of my birthday. What I can say without fear is that precisely on the day I was born, I started living. Moreover, at the time of writing this, I am certain that I’m still alive.</p>
+        <p>One of the most notable things about my personality is an apparent interest in mathematical problems, which can be evidenced by the fact that, for example, I am capable of counting up to one hundred without too many mistakes. It’s for this reason that, emulating the ancient Diophantus, I intend to reveal my age through a mathematical riddle:</p>
+        <p>Let <strong>A</strong> be the current year. For simplicity, we will consider my age as of December 31st of the current year. Then, my age <strong>E</strong> is given by the equation:</p>
+        <p className='center'><strong>E + n = A</strong></p>
+        <p>where <strong>n</strong> is the year of my birth.</p>
+        <p>Another evident trait of my personality is my interest in programming, and this is clear to the extent that I have already developed my own personal website (which, for those who are not aware, can be visited by clicking <a href="#">here</a>).</p>
+        <p>With this line, and after having gone into detail about myself, I conclude this autobiography.</p>
     </div>
   );
 }

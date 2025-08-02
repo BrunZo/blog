@@ -5,21 +5,21 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 const links = [
-  {'name': 'inicio', 'href': '/'},
-  {'name': 'sobre mí', 'href': '/about-me'},
-  {'name': 'notas', 'href': '/notes'}
+  {'name': 'home', 'href': '/'},
+  {'name': 'about me', 'href': '/about-me'},
+  {'name': 'notes', 'href': '/notes'}
 ]
 
 export default function Navbar() {
   const pathname = usePathname();
   return (
-    <nav className='relative flex justify-center bg-gray-100 '>
+    <nav className='relative flex justify-center '>
       <div className='flex items-center justify-between w-full h-12 md:w-5/6'>
         <div className='flex items-center'>
           {links.map((link) => {
             const styles = clsx('flex items-center px-4 h-12', {
-              'bg-gray-300': pathname === link.href,
-              'hover:bg-gray-200': pathname !== link.href
+              'underline': pathname === link.href,
+              'hover:bg-gray-100': pathname !== link.href
             })
             return (
               <div key={link.name} className={styles}>
@@ -33,7 +33,6 @@ export default function Navbar() {
           })}
         </div>
         <div className=''>
-          <NavbarLink href='/login' text='login'/>
         </div>
       </div>
     </nav>
