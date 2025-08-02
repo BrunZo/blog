@@ -46,7 +46,7 @@ function PaginationArrow({ direction, href, isDisabled }: {
   isDisabled: boolean
 }) {
   const styles = clsx(
-    'bg-gray-100 text-gray-800 py-2 px-4',
+    'hover:bg-gray-100 text-gray-800 py-2 px-4',
     {
       'disabled': isDisabled
     }
@@ -72,9 +72,9 @@ function PaginationButton({ page, href, isActive }: {
   isActive: boolean
 }) {
   const styles = clsx(
-    'bg-gray-100 text-gray-800 py-2 px-4',
+    'text-gray-800 py-2 px-4',
     {
-      'bg-gray-300': isActive
+      'underline': isActive
     }
   )
   return isActive || page === '...' ? (

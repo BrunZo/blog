@@ -1,6 +1,11 @@
 import Link from "next/link";
 
-export default function Card({id, title, abstract, date}: {
+export default function Card({
+  id, 
+  title, 
+  abstract, 
+  date
+}: {
   id: number,
   title: string,
   abstract: string,

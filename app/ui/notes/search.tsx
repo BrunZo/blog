@@ -23,7 +23,7 @@ export default function Search() {
       <input
         className='border border-gray-300 rounded p-2 mt-4'
         type='text'
-        placeholder='Buscar notas'
+        placeholder='search keywords'
         onChange={(e) => { search_article(e.target.value) }}
         defaultValue={searchParams.get('query')?.toString()}>
       </input>
