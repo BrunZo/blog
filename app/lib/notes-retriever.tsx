@@ -20,15 +20,15 @@ export async function fetchAmountPages({
 export async function fetchFilteredArticles({
   query,
   tags,
-  page='1'
+  page
 }: {
   query?: string,
   tags?: string[],
-  page: string
+  page?: string
 }) {
   const baseDir = path.join(process.cwd(), 'app/content');
   const paths = fs.readdirSync(baseDir)
                     .filter((file) => file.endsWith('.mdx'))
-                    .slice((Number(page) - 1) * CARDS_BY_PAGE, Number(page) * CARDS_BY_PAGE);
+                    .slice((Number(page || '1') - 1) * CARDS_BY_PAGE, Number(page || '1') * CARDS_BY_PAGE);
   return paths.map(path => path.replace(/\.mdx$/, ''));
 }
