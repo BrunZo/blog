@@ -9,6 +9,8 @@ export default async function Page({
 }) {
   const { id } = await params;
   const { default: Note, title, date } = await import(`@/app/content/${id}.mdx`);
+  const millisecondsSinceBirth = date - new Date("2004-07-21 10:08:00");
+  const minutesSinceBirth = millisecondsSinceBirth / 60000;
 
   if (!Note) {
     return (
@@ -33,7 +35,7 @@ export default async function Page({
           Return to note list
       </Link>
       <h1 className='font-bold text-gray-800 text-2xl'>{title}</h1>
-      <p className='text-gray-500 text-sm'>{date}</p>
+      <p className='text-gray-500 text-sm'>{minutesSinceBirth}</p>
       <Note />
     </>
   )
