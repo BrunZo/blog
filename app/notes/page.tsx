@@ -17,7 +17,7 @@ export default async function Page({
   const notes = await Promise.all(
     paths.map(async (path) => {
       const { title, date, abstract } = await import(`@/app/content/${path}.mdx`)
-      const millisecondsSinceBirth = date - new Date("2004-07-21 10:08:00");
+      const millisecondsSinceBirth = date.getTime() - new Date("2004-07-21 10:08:00").getTime();
       const minutesSinceBirth = millisecondsSinceBirth / 60000;
 
       return {
