@@ -27,6 +27,7 @@ export default function Pagination({ amountPages: totalPages }: {
       {allPages.map((i) => {
         return (
           <PaginationButton
+            key={i}
             page={String(i)}
             href={createPageURL(i)}
             isActive={i === currentPage}/>

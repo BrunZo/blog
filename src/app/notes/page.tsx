@@ -1,7 +1,7 @@
-import CardGrid from "app/ui/notes/card-grid";
-import Pagination from "app/ui/notes/pagination";
-import Search from "app/ui/notes/search";
-import { fetchAmountPages, fetchFilteredArticles as fetchFilteredNotes } from "app/lib/notes-retriever";
+import CardGrid from "@/ui/notes/card_grid";
+import Pagination from "@/ui/notes/pagination";
+import Search from "@/ui/notes/search";
+import { fetchAmountPages, fetchFilteredNotes } from "@/lib/notes_retriever";
 
 export default async function Page({
   searchParams,
@@ -16,7 +16,7 @@ export default async function Page({
   const paths = await fetchFilteredNotes(searchParams);
   const notes = await Promise.all(
     paths.map(async (path) => {
-      const { title, date, abstract } = await import(`@/app/content/${path}.mdx`)
+      const { title, date, abstract } = await import(`@/content/${path}.mdx`)
       const millisecondsSinceBirth = date.getTime() - new Date("2004-07-21 10:08:00").getTime();
       const minutesSinceBirth = millisecondsSinceBirth / 60000;
 
