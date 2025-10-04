@@ -8,7 +8,7 @@ export default async function Page({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params;
-  const { default: Note, title, date } = await import(`@/app/content/${id}.mdx`);
+  const { default: Note, title, date } = await import(`@/content/${id}.mdx`);
   const millisecondsSinceBirth = date.getTime() - new Date("2004-07-21 10:08:00").getTime();
   const minutesSinceBirth = millisecondsSinceBirth / 60000;
 
@@ -45,7 +45,7 @@ export default async function Page({
  * This is necessary for the above function to be async and import MDX components
  */
 export async function generateStaticParams() {
-  const baseDir = path.join(process.cwd(), 'app/content');
+  const baseDir = path.join(process.cwd(), 'src/content');
   const paths = fs.readdirSync(baseDir)
                     .filter((file) => file.endsWith('.mdx'));
   const params = paths.map(path => ({ id: path.replace(/\.mdx$/, '') }))
