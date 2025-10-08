@@ -47,24 +47,26 @@ function matchesTags(note: any, tags: string[]): boolean {
   return tags.some(tag => noteTags.includes(tag));
 }
 
-// Abstracted filtering function
-async function applyFilter(mdxFiles: string[], query?: string, tags?: string[]): Promise<string[]> {
-  // If no filtering is applied, return all files
-  if (!query && (!tags || tags.length === 0)) {
-    return mdxFiles;
-  }
+// Abstracted filtering and sorting function
+async function applyFilterAndSort(mdxFiles: string[], query?: string, tags?: string[]): Promise<string[]> {
+  const notesWithDates = [];
   
-  // Filter notes based on query and tags
-  const filteredNotes = [];
+  // Read all notes and filter them in a single pass
   for (const file of mdxFiles) {
     const note = await readMdxFile(file);
     
     if (note && matchesQuery(note, query) && matchesTags(note, tags)) {
-      filteredNotes.push(file);
+      notesWithDates.push({
+        file,
+        date: note.date
+      });
     }
   }
   
-  return filteredNotes;
+  // Sort by date in descending order (newest first)
+  notesWithDates.sort((a, b) => b.date.getTime() - a.date.getTime());
+  
+  return notesWithDates.map(note => note.file);
 }
 
 // Abstracted pagination function
@@ -85,7 +87,7 @@ export async function fetchAmountPages({
   const mdxFiles = fs.readdirSync(baseDir)
                       .filter((file) => file.endsWith('.mdx'));
   
-  const filteredNotes = await applyFilter(mdxFiles, query, tags);
+  const filteredNotes = await applyFilterAndSort(mdxFiles, query, tags);
   return Math.ceil(filteredNotes.length / CARDS_BY_PAGE);
 }
 
@@ -102,7 +104,7 @@ export async function fetchFilteredNotes({
   const mdxFiles = fs.readdirSync(baseDir)
                       .filter((file) => file.endsWith('.mdx'));
   
-  const filteredNotes = await applyFilter(mdxFiles, query, tags);
+  const filteredNotes = await applyFilterAndSort(mdxFiles, query, tags);
   const paginatedNotes = applyPagination(filteredNotes, page);
   
   return paginatedNotes.map(path => path.replace(/\.mdx$/, ''));
