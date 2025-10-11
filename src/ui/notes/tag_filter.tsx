@@ -85,7 +85,7 @@ export default function TagFilter({ availableTags }: { availableTags: string[] }
           </svg>
           
           {selectedTags.length === 0 ? (
-            <span className="text-sm text-gray-700">Filter by tags</span>
+            <span className="text text-gray-500">Filter by tags</span>
           ) : selectedTags.length <= 3 ? (
             <div className="flex flex-wrap gap-1">
               {selectedTags.map((tag) => (
