@@ -109,3 +109,20 @@ export async function fetchFilteredNotes({
   
   return paginatedNotes.map(path => path.replace(/\.mdx$/, ''));
 }
+
+export async function fetchAllTags(): Promise<string[]> {
+  const baseDir = path.join(process.cwd(), '/src/content');
+  const mdxFiles = fs.readdirSync(baseDir)
+                      .filter((file) => file.endsWith('.mdx'));
+  
+  const allTags = new Set<string>();
+  
+  for (const file of mdxFiles) {
+    const note = await readMdxFile(file);
+    if (note && note.tags) {
+      note.tags.forEach(tag => allTags.add(tag));
+    }
+  }
+  
+  return Array.from(allTags).sort();
+}
