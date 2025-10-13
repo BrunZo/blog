@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'katex/dist/katex.min.css';
+
 h1 {
   @apply font-bold;
   @apply text-4xl;
@@ -43,4 +45,23 @@ ul {
   @apply list-disc;
   @apply ml-4;
   @apply mb-4;
+}
+
+/* LaTeX math styling */
+.katex {
+  font-size: 1.1em;
+}
+
+.katex-display {
+  margin: 1em 0;
+  text-align: center;
+}
+
+/* Ensure math doesn't break layout */
+.katex-display .katex {
+  display: inline-block;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow-x: auto;
+  text-align: initial;
 }

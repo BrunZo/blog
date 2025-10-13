@@ -21,7 +21,7 @@ export default function Search() {
   return (
     <div className='flex flex-col'>
       <input
-        className='border border-gray-300 rounded p-2 mt-4'
+        className='border border-gray-300 rounded p-2'
         type='text'
         placeholder='search keywords'
         onChange={(e) => { search_article(e.target.value) }}

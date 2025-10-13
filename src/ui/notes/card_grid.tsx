@@ -11,7 +11,8 @@ export default function CardGrid({ notes }) {
           id={note.id}
           title={note.title}
           abstract={note.abstract}
-          date={note.date} />
+          date={note.date}
+          tags={note.tags} />
       ))}
     </div>
   );

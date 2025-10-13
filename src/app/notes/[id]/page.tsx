@@ -34,7 +34,7 @@ export default async function Page({
         className='text-md text-gray-500 hover:text-gray-800'>
           Return to note list
       </Link>
-      <h1 className='font-bold text-gray-800 text-2xl'>{title}</h1>
+      <h1 className='font-bold text-gray-800 text-4xl'>{title}</h1>
       <p className='text-gray-500 text-sm'>{minutesSinceBirth}</p>
       <Note />
     </>
