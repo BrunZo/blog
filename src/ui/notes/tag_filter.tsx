@@ -75,7 +75,7 @@ export default function TagFilter({ availableTags }: { availableTags: string[] }
   return (
     <div className="relative w-full" ref={dropdownRef}>
       {/* Tag Filter Button */}
-      <button
+      <div
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between px-3 py-2 border border-gray-300 rounded-md bg-white hover:bg-gray-50 transition-colors"
       >
@@ -123,7 +123,7 @@ export default function TagFilter({ availableTags }: { availableTags: string[] }
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
-      </button>
+      </div>
 
       {/* Dropdown */}
       {isOpen && (
