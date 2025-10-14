@@ -1,0 +1,21 @@
+export const title = "Abstracción e ingeniería";
+export const date = new Date("2025-09-10 18:00:00");
+export const abstract = 
+    `Reflexiones sobre la ingeniería y el rol de la abstracción en el desarrollo tecnológico.`;
+export const tags = ["engineering", "abstraction"];
+
+En esta nota pretendo argumentar que la abstracción es el rol fundamental en el desarrollo tecnológico de la humanidad.
+
+## Abstracción
+
+La abstracción es el concepto más importante para el desarrollo de la humanidad. Gracias a ella, cada uno puede usar las herramientas a su disposición (comida, la heladera, un celular, una notebook, una librería de Python, etc.) sin tener que fabricarla o conocer los detalles de su fabricación. Es decir, uno no requiere hacer la trazabilidad de la comida que compra en el supermercado para asegurarse su sanidad: uno puede abstraer esta función a la agencia correspondiente de sanidad de la región.
+
+Sin esta abstracción, no habría forma de que el progreso de la humanidad haya sido tan pronunciado como en los últimos años.
+
+## Un futuro de la ingeniería
+
+Propongo un futuro en el que el _dependency hell_ no existe. La forma de hacer esto es mediante especificaciones en vez de funciones. Cada package que uno instala, en realidad, es una implementación de una especificación. Entonces, la "versión" que uno implementa es irrelevante, ya que con que satisfaga la especificación es un paquete válido para esa función.
+
+Para las utilidades matemáticas esto es sencillísimo; ahora bien, para las utilidades gráficas, por ejemplo, como los _frameworks_ para desarrollo web, no aún una documentación rigurosa. Para esto, se me ocurre que uno podría intentar asignar _ownership_ a cada píxel de la pantalla, y que cada micro-librería se encargue de administrar sus píxeles. 
+
+El objetivo final es que incluso las librerías de los frameworks para desarrollo web puedan ser formalmente verificadas, y, en consecuencia, nunca más haya problemas de versionado en Next.
