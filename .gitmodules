@@ -1,3 +1,3 @@
 [submodule "zettel"]
 	path = zettel
-	url = git@github.com:BrunZo/zettel.git
+	url = https://github.com/BrunZo/zettel.git
