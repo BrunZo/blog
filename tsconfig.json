@@ -25,6 +25,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "zettel/*": [
+        "zettel/*"
       ]
     },
     "target": "ES2017"
@@ -32,10 +35,8 @@
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.md",
-    "**/*.mdx"
+    "**/*.{ts,tsx,md,mdx}",
+    "zettel/**/*.{ts,tsx,md,mdx}"
   ],
   "exclude": [
     "node_modules"
