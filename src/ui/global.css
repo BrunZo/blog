@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@source "./src/**/*.{js,ts,jsx,tsx,mdx}";
+@source "./zettel/ui/**/*.{js,ts,jsx,tsx,mdx}";
 
 @import 'katex/dist/katex.min.css';
 
