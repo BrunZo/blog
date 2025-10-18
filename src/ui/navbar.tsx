@@ -18,7 +18,7 @@ export default function Navbar() {
         <div className='flex items-center'>
           {links.map((link) => {
             const styles = clsx('flex items-center px-4 h-12', {
-              'underline': pathname === link.href,
+              'bg-gray-100': pathname === link.href,
               'hover:bg-gray-100': pathname !== link.href
             })
             return (

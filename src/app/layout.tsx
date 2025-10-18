@@ -1,11 +1,10 @@
-import '@/ui/global.css';
-import { inter } from '@/ui/fonts';
+import 'zettel/ui/styles/global.css';
 import Navbar from "@/ui/navbar";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='es'>
-      <body className={`${inter.className} antialiasing`}>
+      <body className={'font-serif antialiasing'}>
         <div>
           <Navbar/>
         </div>
