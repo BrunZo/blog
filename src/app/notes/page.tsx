@@ -1,4 +1,4 @@
-import ZettelSearch from "zettel/ui/zettel_search";
+import ZettelSearch from "zettel/ui/pages/zettel_search";
 
 export default async function Page({
   searchParams,

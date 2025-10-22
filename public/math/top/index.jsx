@@ -1,4 +1,4 @@
-import ZettelList from "zettel/ui/zettel_list";
+import ZettelList from "zettel/ui/z/zettel_list";
 import { filterZettels } from "zettel/lib/retrieve";
 
 export const id = "topology";
