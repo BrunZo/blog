@@ -15,7 +15,7 @@ export default async function Page({
   return (
     <>
       <Link href="/notes" className='text-gray-500'>Back to notes</Link>
-      <Zettel key={id} {...zettel} mode="full" />
+      <Zettel key={id} {...zettel} mode="full" showTitle={true} showDate={true} showTags={true} showAbstract={true} />
     </>
   );
 }
