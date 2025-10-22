@@ -1,0 +1,18 @@
+export const title = "Global vs. local";
+export const date = new Date("2025-10-21 16:20:00");
+export const abstract = `
+There is a difference between finding local and global extrema of some given function $f: A\to \R$. In this note I discuss how this local-global phenomenon can be taken into account for better life planning.
+`;
+export const tags = ["thoughts", "growth"];
+
+# Global vs. local
+
+Given an \"utility\" function $f: A\to \R$ there's this great difference between finding local and global extrema. Essentially, finding local extrema is generally easier because we can do it using **local arguments**—namely, studying how $f(x)$ responds to small changes in $x\in A$, or, when applicable, studying the derivative $f'$ (which, in turn, encompasses the first technique). Otherwise, we must appeal to **global arguments**, which require the additional work of considering values of $f(x)$ for points that may be very far from each other. 
+
+If we think of $A$ as endowed with a metric which conveys the \"cost\" of travelling between points in $A$, and we assume that testing different values of $f$ requires travelling between points in the domain, then local arguments are cheaper than global arguments. This is the case, for example, in chess, where solving for locally optimal solutions is very fast, but finding globally optimal solutions is essentially unfeasible. This is known as the <a className="text-gray-500 hover:text-gray-800" href="https://en.wikipedia.org/wiki/Horizon_effect">horizon effect</a>.
+
+Another really cool interpretation of this is in personal growth. Given some \"utility\" function we want to maximize—such as \"happiness\", \"wellbeing\", etc.—it's very common to get stuck in local optima. The reason is that it's easier to take cheaper paths with immediate rewards (probably because dopamine trains us that way?) than to pursue very costly paths with greater rewards. There're plenty of examples of this, so I'll appeal to my own experience.
+
+For example, when I trained for the IMO, it was very easy for me to get distracted with "easier" problems, which would take me 30 minutes to solve, instead of tackling a harder problem that could take days and still seem impossible. I warn my students about this issue, because the problem is not that you don't improve by solving easier problems—in fact, you do—but that you might be approaching a local maximum (becoming extremely good at solving medium-level problems) while moving away from the global optimum (being capable of solving problems of any difficulty). This does not mean that you must always take the hardest problem you find out there, as there might be too costly to solve it and not worth it in the end. The main difficulty of learning is finding the \"right\" difficulty: hard enough to push you towards the global maximum but not so hard that it frustrates you.
+
+This, in turn, is why teachers exist. If we're not acquainted with the terrain, we might not easily find our way to the peak, and thus we need someone to guide us. There're, however, cases where very few people (if any) can guide us, and so we must rely on trial and error. Happiness is a great example, as we all have different \"happiness functions\" that value the same state very differently. Thus, if we want to maximize happiness we must avoid the cheap improvements in favor of more long-term life planning, but without making sacrifices which might ultimately not be worth it. Of course this requires a lot of introspection and willpower, but I guess that nobody reading this actually thinks that living should be easy.
