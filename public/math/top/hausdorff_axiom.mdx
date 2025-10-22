@@ -1,4 +1,19 @@
+import Definition from 'zettel/ui/math/definition'
+
 export const id = "hausdorff_axiom";
 export const title = "Hausdorff axiom";
+export const sectionNumber = 6;
 
+Our current definition of topological space has some drawbacks. There're some "intuitive" facts that do not hold anymore for arbitrary topological spaces:
+
+1. A singleton $\{x\}$ does not need to be a closed subset.
+
+2. A sequence $(x_n)_{n\ge 1}$ can have more than one limit.
+
+(Prove that if every sequence has a unique limit then the set $\{x\}$ must be closed.)
+
+There is an additional axiom which allows us to prove the previous two facts for every topological space that satisfies it.
+
+<Definition title='Hausdorff axiom'>
 Let $X$ be a topological space. We say that $X$ satisfies the **Hausdorff axiom** (also called the $T_2$ axiom) if for every $x, y\in X$ there're open sets $U$, $V$ such that $x\in U$, $y\in V$ and $U\cap V = \emptyset$.
+</Definition>
