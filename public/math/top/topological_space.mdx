@@ -1,10 +1,15 @@
 export const id = "topological_space";
 export const title = "Topological space";
+export const sectionNumber = 1;
 
 Let $X$ be a set. A **topology** over $X$ is some subset $\tau\subseteq \mathcal{P}(X)$ such that:
 
-1. $\emptyset$ and $X$ belong to $\tau$.
-2. Arbitrary union of elements of $\tau$ belongs to $\tau$.
-3. Intersection of two elements of $\tau$ belongs to $\tau$.
+1. $\emptyset, X\in \tau$.
 
-A **topological space** is a set $X$ endowed with some specific topology $\tau$.
+2. $\{U_i\}_{i\in I}\subseteq \tau \Longrightarrow \bigcup_{i\in I} U_i\in\tau$.
+
+3. $\{U_i\}_{i=1,\ldots,n}\subseteq \tau \Longrightarrow \bigcap_{i=1}^{n} U_i\in\tau$.
+
+The subsets $A\in\tau$ are called the **open subsets** of the topology.
+
+A **topological space** is a set $X$ endowed with some specific topology $\tau$. Despite a topological space is technically a pair $(X, \tau)$, we might as well refer to the "topological space $X$" whenever the topology is understood, e.g. the topological space $\R$ (whose open sets are the clasical open sets of real analysis). 
