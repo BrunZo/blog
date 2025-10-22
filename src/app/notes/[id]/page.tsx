@@ -1,8 +1,6 @@
-import fs from "fs";
 import Link from "next/link";
-import path from "path";
 import { zettelById } from "zettel/lib/retrieve";
-import Zettel from "zettel/ui/zettel";
+import Zettel from "zettel/ui/z/zettel";
 
 export default async function Page({ 
   params 
