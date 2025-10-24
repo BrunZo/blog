@@ -9,5 +9,5 @@ export default async function Page({
     page?: string
   }>;
 }) {
-  return <ZettelSearch searchParams={searchParams} />;
+  return <ZettelSearch searchParams={searchParams} globPattern="visible/**/*.{jsx,mdx}"/>;
 }
