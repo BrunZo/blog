@@ -29,8 +29,8 @@
       "zettel/*": [
         "zettel/*"
       ],
-      "notes/*": [
-        "notes/*"
+      "public/*": [
+        "public/*"
       ]
     },
     "target": "ES2017"
@@ -39,7 +39,7 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "src/**/*.{ts,tsx,md,mdx}",
-    "notes/**/*.{ts,tsx,md,mdx}",
+    "public/**/*.{ts,tsx,md,mdx}",
     "zettel/**/*.{ts,tsx,md,mdx}"
   ],
   "exclude": [
