@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { zettelById } from "zettel/lib/retrieve";
+
+import { filterZettels, zettelById } from "zettel/lib/retrieve";
 import Zettel from "zettel/ui/z/zettel";
 
 export default async function Page({ 
@@ -16,4 +17,9 @@ export default async function Page({
       <Zettel key={id} {...zettel} mode="full" showTitle={true} showDate={true} showTags={true} showAbstract={true} />
     </>
   );
+}
+
+export async function generateStaticParams() {
+  const zettels = await filterZettels({ globPattern: "visible/**/*.{jsx,mdx}" });
+  return zettels.map((zettel) => ({ id: zettel.id }));
 }
