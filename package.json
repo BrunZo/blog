@@ -18,7 +18,8 @@
     "react-dom": "^18.2.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "use-debounce": "^10.0.0"
+    "use-debounce": "^10.0.0",
+    "zettel": "file:zettel"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",
@@ -27,6 +28,11 @@
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "tailwindcss": "^4.1.13",
-    "typescript": "5.3.3"
-  }
+    "typescript": "5.9.3"
+  },
+  "workspaces": [
+    "src",
+    "notes",
+    "zettel"
+  ]
 }
