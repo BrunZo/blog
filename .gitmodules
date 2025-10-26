@@ -2,5 +2,5 @@
 	path = zettel
 	url = https://github.com/BrunZo/zettel.git
 [submodule "notes"]
-	path = public
+	path = notes
 	url = https://github.com/BrunZo/notes.git
