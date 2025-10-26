@@ -28,6 +28,9 @@
       ],
       "zettel/*": [
         "zettel/*"
+      ],
+      "public/*": [
+        "public/*"
       ]
     },
     "target": "ES2017"
