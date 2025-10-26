@@ -28,6 +28,9 @@
       ],
       "zettel/*": [
         "zettel/*"
+      ],
+      "notes/*": [
+        "notes/*"
       ]
     },
     "target": "ES2017"
@@ -35,7 +38,8 @@
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "**/*.{ts,tsx,md,mdx}",
+    "src/**/*.{ts,tsx,md,mdx}",
+    "notes/**/*.{ts,tsx,md,mdx}",
     "zettel/**/*.{ts,tsx,md,mdx}"
   ],
   "exclude": [
