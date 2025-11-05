@@ -54,6 +54,8 @@ export default function HomePage() {
       </p>
 
       <h3 className='font-semibold text-lg'>other</h3>
+      I'm also reading Luenberger's Investment Science and uploading my notes & code&nbsp;
+      <NiceLink text="here" href="https://github.com/BrunZo/finance" />.
     </div>
   );
 }
