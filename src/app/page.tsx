@@ -1,5 +1,15 @@
 import Link from "next/link";
 
+function NiceLink({text, href}: {text: string, href: string}) {
+  return (      
+    <Link
+      href={href}
+      className='text-md text-gray-500 hover:text-gray-800'>
+        {text}
+    </Link>
+  );
+};
+
 export default function HomePage() {
   return (
     <div className='text-gray-800'>
@@ -17,32 +27,33 @@ export default function HomePage() {
       </p>
       
       <h2 className='font-bold text-xl mt-4'>working on...</h2>
-      <table className='border-separate border-spacing-x-4'>
-        <tbody>
-          <tr>
-            <td>
-              <a href='https://servilleta.vercel.app/' className='text-md text-gray-500 hover:text-gray-800'>Servilleta</a>
-            </td>
-            <td>A site for my math notes, currently in development.</td>
-          </tr>
-          <tr>
-            <td>
-              <a href='https://iberoofficial.vercel.app/' className='text-md text-gray-500 hover:text-gray-800'>ibero-official</a>
-            </td>
-            <td>Resultados históricos de la Olimpiada Iberoamericana de Matemática.</td>
-          </tr>
-          <tr>
-            <td>
-              <a href='/' className='text-md text-gray-500 hover:text-gray-800'>
-                this
-              </a>
-            </td>
-            <td>
-              Look around.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <h3 className='font-semibold text-lg'>math</h3>
+      <p>I have some notes from the math lessons I took:</p>
+      <ul>
+        <li><NiceLink text="topology" href="notes/topology"/></li>
+        <li><NiceLink text="algebra" href="notes/algebra"/></li>
+      </ul>
+      <p>Also, I'm creating a website to read all notes I've written to train students for math olympiads:</p>
+      <ul>
+        <li><NiceLink text="servilleta" href="servilleta.vercel.app"/></li>
+      </ul>
+      <p className='text-sm'>This is very incomplete and low-priority right now, so it will be so for at least some months.</p>
+      <h3 className='font-semibold text-lg'>phi</h3>
+      <p>I like writing some thoughts I have, most of which are completely wrong. You can read some:</p>
+      <ul>
+        <li><NiceLink text="local-global phenomena in life designing" href="notes/global_local"/></li>
+        <li><NiceLink text="thoughts on daydreaming" href="notes/why_daydreaming"/></li>
+        <li><NiceLink text="the mind space" href="notes/mind_space"/></li>
+      </ul>
+      <p>All my other notes can be found&nbsp;      
+        <Link 
+          href="/notes"
+          className='text-md text-gray-500 hover:text-gray-800'>
+            here
+        </Link>.
+      </p>
+
+      <h3 className='font-semibold text-lg'>other</h3>
     </div>
   );
 }
