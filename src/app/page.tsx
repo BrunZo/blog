@@ -29,33 +29,18 @@ export default function HomePage() {
       <h2 className='font-bold text-xl mt-4'>working on...</h2>
       <h3 className='font-semibold text-lg'>math</h3>
       <p>I have some notes from the math lessons I took:</p>
-      <ul>
+      <ul className='list-disc list-inside ml-4 space-y-1'>
         <li><NiceLink text="topology" href="notes/topology"/></li>
         <li><NiceLink text="algebra" href="notes/algebra"/></li>
       </ul>
-      <p>Also, I'm creating a website to read all notes I've written to train students for math olympiads:</p>
-      <ul>
-        <li><NiceLink text="servilleta" href="servilleta.vercel.app"/></li>
-      </ul>
-      <p className='text-sm'>This is very incomplete and low-priority right now, so it will be so for at least some months.</p>
+      <p>Also, I'm creating a website to read all notes I've written to train students for math olympiads:&nbsp;
+        <NiceLink text="servilleta" href="https://servilleta.vercel.app"/>.</p>
       <h3 className='font-semibold text-lg'>phi</h3>
-      <p>I like writing some thoughts I have, most of which are completely wrong. You can read some:</p>
-      <ul>
-        <li><NiceLink text="local-global phenomena in life designing" href="notes/global_local"/></li>
-        <li><NiceLink text="thoughts on daydreaming" href="notes/why_daydreaming"/></li>
-        <li><NiceLink text="the mind space" href="notes/mind_space"/></li>
-      </ul>
-      <p>All my other notes can be found&nbsp;      
-        <Link 
-          href="/notes"
-          className='text-md text-gray-500 hover:text-gray-800'>
-            here
-        </Link>.
-      </p>
-
-      <h3 className='font-semibold text-lg'>other</h3>
-      I'm also reading Luenberger's Investment Science and uploading my notes & code&nbsp;
-      <NiceLink text="here" href="https://github.com/BrunZo/finance" />.
+      <p>I like writing all sort of wrong reasonings. You can read them&nbsp;
+        <NiceLink text="here" href="phi"/>.</p>
+      <h3 className='font-semibold text-lg'>finance</h3>
+      <p>I'm also reading Luenberger's Investment Science and uploading notes & implementation&nbsp;
+        <NiceLink text="here" href="https://github.com/BrunZo/finance"/>.</p>
     </div>
   );
 }
