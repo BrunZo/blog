@@ -1,4 +1,12 @@
+# python
+.venv
+*.egg-info
+__pycache__
+
+# javascript
+dist
 node_modules
+.mdx-cache
+
+# secrets
 .env.local
-.next
-.vercel

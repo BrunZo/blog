@@ -1,3 +1,3 @@
-# notes
+# blog
 
-Personal notes, deployed used Next.js + zettel
+Personal blog, currently, deployed with a mix of FastAPI + React.

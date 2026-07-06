@@ -1,9 +1,11 @@
 import Navbar from "@/ui/navbar";
-import "@/ui/global.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='es'>
+      <head>
+        <link rel="stylesheet" href="/global.css" />
+      </head>
       <body className={'font-serif antialiasing'}>
         <div>
           <Navbar/>
