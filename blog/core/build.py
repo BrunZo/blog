@@ -12,10 +12,11 @@ import argparse
 import shutil
 from pathlib import Path
 
-from app.site import VAULT_PATH, Site, load_site
-from core import pages
-from core.html import blocks_to_html
 from notekit.render import obsidian
+
+from blog.app.site import VAULT_PATH, Site, load_site
+from blog.core import pages
+from blog.core.html import blocks_to_html
 
 STYLE = Path(__file__).parent / "style.css"
 

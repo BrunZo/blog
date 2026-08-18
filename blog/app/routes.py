@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException, Query
 
-from app.site import cached_site
+from blog.app.site import cached_site
 
 router = APIRouter(prefix="/api")
 

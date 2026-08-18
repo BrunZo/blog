@@ -21,7 +21,7 @@ DRY_RUN=""
 cd "$REPO_DIR"
 
 echo "==> build"
-python -m core.build --out "$DIST_DIR" --vault "$VAULT_PATH"
+python -m blog.core.build --out "$DIST_DIR" --vault "$VAULT_PATH"
 
 # The publish gate has to hold both ways: no page may link somewhere that does
 # not exist, and no page may reveal a note that is not published.
@@ -29,7 +29,7 @@ echo "==> check the publish gate"
 python -m pytest tests/ --site "$DIST_DIR" --vault "$VAULT_PATH" -q
 
 echo "==> upload to $REMOTE:$REMOTE_DIR"
-rsync -az --delete $DRY_RUN --itemize-changes "$DIST_DIR/" "$REMOTE:$REMOTE_DIR/"
+rsync -az -e "ssh -i $CERT_DIR" --delete $DRY_RUN --itemize-changes "$DIST_DIR/" "$REMOTE:$REMOTE_DIR/"
 
 [ -n "$DRY_RUN" ] && echo "(dry run — nothing uploaded)"
 echo "done"

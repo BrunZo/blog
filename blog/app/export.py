@@ -12,7 +12,7 @@ import json
 import shutil
 from pathlib import Path
 
-from app.site import VAULT_PATH, load_site
+from blog.app.site import VAULT_PATH, load_site
 
 
 def parse_args():
