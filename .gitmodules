@@ -1,6 +1,0 @@
-[submodule "zettel"]
-	path = js/zettel
-	url = https://github.com/BrunZo/zettel.git
-[submodule "notes"]
-	path = js/blog-ui/src/notes
-	url = https://github.com/BrunZo/notes.git

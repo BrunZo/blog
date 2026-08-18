@@ -55,11 +55,16 @@ class Site:
     notes: dict[str, Note]            # slug -> Note
     published_paths: dict[Path, str]  # abs path -> slug
 
-    def href(self, target_stem_or_path: str) -> str | None:
-        """Resolve a wikilink target to a public URL, or None if unpublished."""
+    def href(self, target: str) -> str | None:
+        """Wikilink target → public URL, or None when the target is not published.
+
+        None is not an error: the renderer degrades those to plain text so a
+        private note never reveals itself through a broken link.
+        """
+        target = target.lstrip("/")
         for path, slug in self.published_paths.items():
-            if path.stem == target_stem_or_path or slug == target_stem_or_path.lstrip("/"):
-                return f"/n/{slug}"
+            if path.stem == target or slug == target or slug.endswith(f"/{target}"):
+                return f"/n/{slug}/"
         return None
 
     def listing(self, tag: str | None = None) -> list[Note]:

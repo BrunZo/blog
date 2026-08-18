@@ -1,0 +1,41 @@
+[project]
+name = "blog"
+version = "0.2.0"
+description = "The public face of the vault. Static HTML, generated from ~/notes."
+requires-python = ">=3.12"
+dependencies = [
+    "notekit",
+    "latex2mathml",   # LaTeX -> MathML at build time, so the site ships no JS
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+# Only the search API needs a running process.
+api = [
+    "fastapi>=0.139.0",
+    "uvicorn[standard]>=0.50.0",
+]
+dev = ["pytest"]
+
+[tool.uv.sources]
+notekit = { path = "../notekit", editable = true }
+
+[project.scripts]
+blog-build = "core.build:main"
+blog-export = "app.export:main"
+blog-server = "app.main:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["blog*"]
+
+[tool.setuptools.package-data]
+core = ["core/style.css"]
+
+[tool.pytest.ini_options]
+# The test files are named for what they check, not for the runner.
+python_files = ["*.py"]
+testpaths = ["tests"]

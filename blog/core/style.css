@@ -1,0 +1,130 @@
+/* Replaces Tailwind. Hand-written because the site is one column of prose. */
+
+:root {
+  --ink: #1c1917;
+  --muted: #78716c;
+  --rule: #e7e5e4;
+  --link: #1c1917;
+  --measure: 34rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.62;
+  color: var(--ink);
+  background: #fdfcfb;
+  -webkit-text-size-adjust: 100%;
+}
+
+nav {
+  border-bottom: 1px solid var(--rule);
+  padding: 1rem 1.25rem;
+}
+nav .home {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 6rem;
+}
+
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 0.4rem; }
+h2 { font-size: 1.35rem; margin: 2.2rem 0 0.6rem; }
+h3 { font-size: 1.1rem; margin: 1.8rem 0 0.5rem; }
+
+p { margin: 0 0 1.1rem; }
+
+a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { background: #f5f5f4; }
+
+.meta { color: var(--muted); font-size: 0.85rem; margin-bottom: 2rem; }
+.tag { color: var(--muted); text-decoration: none; margin-right: 0.4rem; }
+.tag:hover { text-decoration: underline; }
+
+blockquote {
+  margin: 1.4rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+  color: #44403c;
+  font-style: italic;
+}
+
+pre {
+  overflow-x: auto;
+  background: #f5f5f4;
+  padding: 0.85rem 1rem;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.88em; }
+pre code { font-size: inherit; }
+
+ul, ol { padding-left: 1.4rem; margin: 0 0 1.1rem; }
+li { margin: 0.25rem 0; }
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+img { max-width: 100%; height: auto; }
+
+/* Transclusion */
+.embed {
+  margin: 1.4rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+}
+
+/* Math. MathML is rendered by the browser; no script, no webfont. */
+math { font-size: 1.05em; }
+.math-display {
+  margin: 1.3rem 0;
+  overflow-x: auto;
+  text-align: center;
+}
+.math-display math { font-size: 1.15em; }
+/* Shown only when latex2mathml could not convert the source. */
+.math-raw {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.9em;
+  background: #fef3c7;
+  padding: 0 0.2em;
+}
+
+/* Listings */
+.listing { list-style: none; padding: 0; }
+.listing li { margin: 0 0 1.6rem; }
+.listing .title { font-size: 1.1rem; }
+.listing time { color: var(--muted); font-size: 0.8rem; margin-left: 0.5rem; }
+.listing p { margin: 0.3rem 0 0; color: #44403c; font-size: 0.95rem; }
+.empty { color: var(--muted); }
+
+.backlinks {
+  margin-top: 4rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1rem;
+}
+.backlinks h2 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+.backlinks ul { list-style: none; padding: 0; }
+
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #e7e5e4; --muted: #a8a29e; --rule: #292524; --link: #e7e5e4; }
+  body { background: #1c1917; }
+  a:hover { background: #292524; }
+  pre, .math-raw { background: #292524; }
+  blockquote, .listing p { color: #d6d3d1; }
+}
