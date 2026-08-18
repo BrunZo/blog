@@ -1,12 +1,9 @@
-# python
-.venv
-*.egg-info
-__pycache__
-
-# javascript
-dist
-node_modules
-.mdx-cache
-
-# secrets
-.env.local
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.egg-info/
+.mdx-cache/
+src/content/
+js/blog-ui/src/content/
+.env

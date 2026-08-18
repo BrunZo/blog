@@ -5,10 +5,15 @@ requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.139.0",
     "uvicorn[standard]>=0.50.0",
+    "notekit",
 ]
+
+[tool.uv.sources]
+notekit = { path = "../../notekit", editable = true }
 
 [project.scripts]
 blog-server = "app.main:main"
+blog-export = "app.export:main"
 
 [build-system]
 requires = ["setuptools>=68"]

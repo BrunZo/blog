@@ -1,114 +1,87 @@
-import {
-  mkdirSync,
-  readFileSync,
-  readdirSync,
-  rmSync,
-  writeFileSync,
-} from "fs";
-import { dirname, join, relative } from "path";
-import { pathToFileURL } from "url";
+/**
+ * Static build. Reads the JSON that `python -m app.export` produced and
+ * pre-renders every page.
+ *
+ * There is no MDX here any more: markdown is parsed once, in Python, by
+ * notekit. This file only turns an AST into HTML.
+ */
 import { execFileSync } from "child_process";
+import { mkdirSync, rmSync, writeFileSync } from "fs";
+import { dirname } from "path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { StaticRouter } from "react-router";
-import { compile, evaluateSync } from "@mdx-js/mdx";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import * as runtime from "react/jsx-runtime";
 
+import Listing from "@/app/listing";
+import NotePage from "@/app/note";
 import RootLayout from "@/layout";
-import HomePage from "@/app/home";
-import PhiPage from "@/app/phi";
+import { loadAllNotes, loadIndex } from "@/render/content";
 
-const MDX_OPTIONS = {
-  remarkPlugins: [remarkMath],
-  rehypePlugins: [[rehypeKatex, { strict: true, throwOnError: true }]],
-};
+interface Page {
+  location: string;
+  filename: string;
+  element: React.ReactNode;
+}
 
-rmSync("dist", { recursive: true, force: true });
-rmSync(".mdx-cache", { recursive: true, force: true });
-mkdirSync("dist", { recursive: true });
+const OUT = process.env.OUT_DIR ?? "dist";
 
-const aboutMeSource = readFileSync("src/app/about-me.mdx", "utf-8");
-const { default: AboutMe } = evaluateSync(aboutMeSource, {
-  ...runtime,
-  ...MDX_OPTIONS,
-} as any);
+const index = loadIndex();
+const notes = loadAllNotes();
 
-// index pages
-const pages: { location: string; component: any; filename: string }[] = [
-  { location: "/", component: HomePage, filename: "index" },
-  { location: "/about-me", component: AboutMe, filename: "about-me/index" },
-  { location: "/phi", component: PhiPage, filename: "phi/index" },
+const pages: Page[] = [
+  {
+    location: "/",
+    filename: "index",
+    element: <Listing notes={index.notes} heading="Notes" />,
+  },
 ];
 
-// notes pages
-async function loadNoteComponent(fullPath: string) {
-  const source = readFileSync(fullPath, "utf-8");
-  const compiled = await compile(source, {
-    outputFormat: "program",
-    ...MDX_OPTIONS,
+for (const note of notes) {
+  pages.push({
+    location: `/n/${note.slug}`,
+    filename: `n/${note.slug}/index`,
+    element: <NotePage note={note} />,
   });
-  const cachePath = join(".mdx-cache", relative("src/notes", fullPath)).replace(
-    /\.mdx$/,
-    ".mjs",
-  );
-  mkdirSync(dirname(cachePath), { recursive: true });
-  writeFileSync(cachePath, String(compiled));
-  return import(pathToFileURL(cachePath).href);
 }
 
-async function walkNotes(dir: string) {
-  const entries = readdirSync(dir, { withFileTypes: true });
-  for (const entry of entries) {
-    const fullPath = join(dir, entry.name);
-    if (entry.isDirectory()) {
-      await walkNotes(fullPath);
-    } else if (entry.isFile() && entry.name.endsWith(".mdx")) {
-      const slug = relative("src/notes", fullPath).replace(/\.mdx$/, "");
-      try {
-        const mod = await loadNoteComponent(fullPath);
-        pages.push({
-          location: `/notes/${slug}`,
-          component: mod.default,
-          filename: `notes/${entry.name.replace(".mdx", "")}/index`,
-        });
-      } catch (error) {
-        console.warn(`skipping notes/${slug}:`, error);
-      }
-    }
-  }
+for (const tag of Object.keys(index.tags)) {
+  pages.push({
+    location: `/tags/${tag}`,
+    filename: `tags/${tag}/index`,
+    element: (
+      <Listing
+        notes={index.notes.filter((n) => n.tags.includes(tag))}
+        heading={`#${tag}`}
+      />
+    ),
+  });
 }
 
-await walkNotes("src/notes");
+rmSync(OUT, { recursive: true, force: true });
+mkdirSync(OUT, { recursive: true });
 
-// compile all React pages
+let rendered = 0;
 for (const page of pages) {
-  const Component = page.component;
   try {
     const html =
       "<!DOCTYPE html>" +
       renderToStaticMarkup(
         <StaticRouter location={page.location}>
-          <RootLayout>
-            <Component />
-          </RootLayout>
+          <RootLayout>{page.element}</RootLayout>
         </StaticRouter>,
       );
-    const outPath = `dist/${page.filename}.html`;
+    const outPath = `${OUT}/${page.filename}.html`;
     mkdirSync(dirname(outPath), { recursive: true });
     writeFileSync(outPath, html);
+    rendered += 1;
   } catch (error) {
-    console.warn(`skipping render of ${page.location}:`, error);
+    console.warn(`skipping ${page.location}:`, error);
   }
 }
 
-rmSync(".mdx-cache", { recursive: true, force: true });
+console.log(`rendered ${rendered}/${pages.length} pages`);
 
-// compile tailwindcss styles
 execFileSync(
   "npx",
-  ["@tailwindcss/cli", "-i", "src/ui/global.css", "-o", "dist/global.css"],
-  {
-    stdio: "inherit",
-  },
+  ["@tailwindcss/cli", "-i", "src/ui/global.css", "-o", `${OUT}/global.css`],
+  { stdio: "inherit" },
 );
